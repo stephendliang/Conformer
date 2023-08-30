@@ -386,4 +386,6 @@ class Model(nn.Module):
         self.decoder = Decoder(**dec_params)
 
     def forward(self, inp: Tensor) -> Tensor:
-        return self.decoder(self.encoder(inp))
+        x = self.encoder(inp)
+        print(x.size())
+        return self.decoder(x)
