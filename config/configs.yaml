@@ -1,5 +1,5 @@
 checkpoint: null
-device: 'cuda'
+device: 'cpu'
 
 tokenizer:
   tokenizer_file: null
