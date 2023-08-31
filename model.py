@@ -375,6 +375,22 @@ class Decoder(nn.Module):
         return output
 
 
+class ModelFC(nn.Module):
+    def __init__(
+            self,
+            enc_params: dict,
+            num_classes: int
+            ) -> None:
+        super().__init__()
+        self.encoder = Encoder(**enc_params)
+        self.linear = nn.Linear(enc_params['enc_dim'], num_classes)
+
+    def forward(self, inp: Tensor) -> Tensor:
+        x = self.encoder(inp)
+        print(x.size())
+        return self.linear(x)
+
+
 class Model(nn.Module):
     def __init__(
             self,
